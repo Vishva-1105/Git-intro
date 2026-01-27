@@ -1,0 +1,14 @@
+What I learned today:
+- Basics of Git and GitHub
+- Creating repositories
+- Making commits and pushing code
+
+Difficulties faced:
+- Understanding commit
+- Remembering Git commands
+- difference between local(current Repo), global(current user) and system(All users)
+
+What I want to learn next:
+- Branching
+- Pull Requests
+- Merge conflicts
