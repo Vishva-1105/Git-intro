@@ -1,0 +1,5 @@
+1. GitHub is used for code collaboration
+2. Repositories store project files
+3. Commits track changes
+4. Branches allow parallel work
+5. Pull Requests help review code
