@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Task List</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+
+  <section class="bg-white p-6 rounded-xl shadow-lg w-full max-w-md">
+    <h2 class="text-2xl font-bold mb-4 text-center">To Do Task</h2>
+
+    <form id="task-form" class="flex mb-3">
+      <input type="text" id="task-input" placeholder="Add a new task"
+             class="flex-1 px-3 py-2 border rounded-l-md focus:outline-none focus:ring-1 focus:ring-blue-400">
+      <button class="bg-indigo-500 text-white px-4 py-2 rounded-r-md hover:bg-indigo-600 transition">Add</button>
+    </form>
+
+    <ul id="task-list" class="space-y-2"></ul>
+  </section>
+  <script>
+    const form = document.getElementById('task-form');
+    const input = document.getElementById('task-input');
+    const taskList = document.getElementById('task-list');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const taskText = input.value.trim();
+      if(!taskText) return;
+
+      const li = document.createElement('li');
+      li.className = "flex justify-between items-center bg-gray-100 p-2 rounded";
+
+      const checkbox = document.createElement('input');
+      checkbox.type = "checkbox";
+      checkbox.className = "mr-2";
+      const span = document.createElement('span');
+      span.textContent = taskText;
+
+      checkbox.addEventListener('change', () => {
+        span.classList.toggle('line-through');
+
+        span.classList.toggle('text-gray-400');
+      });
+
+      const taskContainer = document.createElement('div');
+      taskContainer.className = "flex items-center";
+      taskContainer.appendChild(checkbox);
+      taskContainer.appendChild(span);
+
+      const deleteBtn = document.createElement('button');
+      deleteBtn.textContent = "Delete";
+      deleteBtn.className = "bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition";
+      deleteBtn.addEventListener('click', () => li.remove());
+
+      li.appendChild(taskContainer);
+      li.appendChild(deleteBtn);
+      taskList.appendChild(li);
+
+      input.value = '';
+    });
+  </script>
+
+</body>
+</html>
